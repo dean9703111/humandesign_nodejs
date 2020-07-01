@@ -11,12 +11,12 @@ fs.readFile('google_key/credentials.json', async (err, content) => {
   authorize(JSON.parse(content), async (auth) => {
     // 解析通過後得到的auth可以當成一種鑰匙，讓你去讀寫google sheets
 
-    for (let year = 1917; year <= 1917; year++) {//這裡是設定我要爬蟲的年份
+    for (let year = 1910; year <= 2050; year++) {//這裡是設定我要爬蟲的年份
 
       let sheet_id = year
       let title = year.toString()
       await addSheet(title, sheet_id, auth)//先建立每個年份的sheet
-      for (let month = 1; month <= 1; month++) {
+      for (let month = 1; month <= 12; month++) {
         let result = await humandesign(year, month);//result為完成抓取及分析處理過的人類圖資訊
         await writeSheet(result, title, auth, month)//再把所有月份寫到這個sheet裡面
       }
