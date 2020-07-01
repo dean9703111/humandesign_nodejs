@@ -1,6 +1,6 @@
 # humandesign_nodejs
 
-基本上這個專案是應朋友邀來做的實驗性project  
+基本上這個專案是應朋友之邀來做的實驗性project  
 
 ### 專案目標
 1. 能成功抓取網頁資料
@@ -12,26 +12,28 @@
 2. npm相關爬蟲套件
 3. google 雲端相關api
 
-#### 安裝爬蟲套件
+### 安裝套件
 ```
-yarn add request cheerio
+yarn
 ```
+### 套件說明
+1. cheerio: 把它當成 jquery，可以做標籤的擷取
+2. request: 把他想像成 ajax 撈取網頁資料的請求方式，可以把整個網頁的 HTML 抓取下來
+3. dotenv: 抓.env的環境設定檔
+4. googleapis: 存取google sheets相關api
 
-#### 啟動node
+
+## 啟動node && 開啟google sheets授權
+請先依照[google sheets api 教學](https://developers.google.com/sheets/api/quickstart/nodejs)完成申請
+接著下指令
 ```
 node index.js
 ```
-
-### 開啟google sheets授權
-請先依照[google sheets api 教學](https://developers.google.com/sheets/api/quickstart/nodejs)完成申請
-然後可以下指令
-```
-node google_sheets.js 
-```
-如果沒意外的話你的google sheets就會成功寫入惹
+然後會跳出一個網址讓你去得到認證碼  
+複製貼上後就能把資料寫進去google sheets嚕
 
 
-### 錯誤處理
+### 錯誤處理(這是google sheets權限不足時會有的問題)
 [GaxiosError: Insufficient Permission](https://www.itread01.com/content/1525348938.html)
 
 
