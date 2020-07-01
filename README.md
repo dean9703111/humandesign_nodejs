@@ -39,6 +39,5 @@ node index.js
 
 ### 參考資訊
 [google sheets api 教學](https://developers.google.com/sheets/api/quickstart/nodejs)
-[人類圖星曆查詢](https://humandesign.org.cn/ephemeris)
 [Oxxo做個簡單的爬蟲](https://www.oxxostudio.tw/articles/201512/spider-basic.html)
 [Node.js 爬蟲](https://andy6804tw.github.io/2018/02/11/nodejs-crawler/)

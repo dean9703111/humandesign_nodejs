@@ -28,7 +28,7 @@ fs.readFile('google_key/credentials.json', async (err, content) => {
 function humandesign (year, month) {//抓人類圖網頁爬蟲function
   return new Promise((resolve, reject) => {//因為搭配await所以用Promise來撰寫
     request({
-      url: "https://humandesign.org.cn/ephemeris?ey=" + year + "&em=" + month, // 人類圖星曆查詢網頁
+      url: process.env.TARGET_WEB + "?ey=" + year + "&em=" + month, // 人類圖星曆查詢網頁
       method: "GET"
     }, async function (error, response, body) {
       if (error || !body) {
