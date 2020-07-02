@@ -132,7 +132,8 @@ async function writeSheet (data, title, auth, month) {//把資料寫進去新的
   const request = {
     spreadsheetId: process.env.SPREADSHEET_ID,
     range: title, //Change title if your worksheet's name is something else
-    valueInputOption: "RAW",// INPUT_VALUE_OPTION_UNSPECIFIED|RAW|USER_ENTERED
+    valueInputOption: "USER_ENTERED",// INPUT_VALUE_OPTION_UNSPECIFIED|RAW|USER_ENTERED
+    // 如果用RAW會強制轉乘文字，所以前面會多'
     resource: {
       values: data
     }

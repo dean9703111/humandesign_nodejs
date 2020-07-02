@@ -58,7 +58,9 @@ function humandesign (year, month) {//抓人類圖網頁爬蟲function
       for (let i = 0; i < table_tr.length; i++) { // 走訪 tr
         const table_td = table_tr.eq(i).find('td'); // 擷取每個欄位(td)
         let arr_table_tr = []
-        for (let j = 0; j < table_td.length; j++) {
+
+        arr_table_tr.push(year+'/'+table_td.eq(0).text().replace(/[+']/g, "").trim())//第一欄為年份先填入
+        for (let j = 1; j < table_td.length; j++) {
           arr_table_tr.push(table_td.eq(j).text().replace(/[+']/g, "").trim())//在這裡過濾一些不希望出現的字元
         }
         result.push(arr_table_tr)
