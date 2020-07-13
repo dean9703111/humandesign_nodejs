@@ -6,8 +6,8 @@ var webdriver = require('selenium-webdriver'),
   By = webdriver.By,
   Wait = webdriver.wait,
   until = webdriver.until;
-const fb_array = JSON.parse(process.env.FB_ARRAY)
-const ig_array = JSON.parse(process.env.IG_ARRAY)
+const fb_array = require('./json/fb.json');
+const ig_array = require('./json/ig.json');
 const ig_username = process.env.IG_USERNAME
 const ig_userpass = process.env.IG_PASSWORD
 
@@ -19,8 +19,8 @@ var driver = new webdriver.Builder()
 
 async function facebookFans () {//抓FB頁面粉絲＋追蹤人數
   for (var i = 0; i < fb_array.length; i++) {
-    await driver.get(fb_array[i])
-    console.log(fb_array[i])
+    await driver.get(fb_array[i]["url"])
+    console.log(fb_array[i]["title"])
     let fb_good_ele = await driver.findElement(By.xpath(`//*[@id="PagesProfileHomeSecondaryColumnPagelet"]//div[contains(@class, '_4bl9')]`))
     const fb_good = await fb_good_ele.getText()
     console.log(`fb_good: ${fb_good}`)
@@ -48,13 +48,12 @@ async function instagramFans () {//抓Instagram頁面追蹤人數
 
   //依序抓出需要統計的頁面
   for (var i = 0; i < ig_array.length; i++) {
-    await driver.get(ig_array[i])
-    console.log(ig_array[i])
+    await driver.get(ig_array[i]["url"])
+    console.log(ig_array[i]["title"])
     let ig_trace_ele = await driver.findElement(By.xpath(`//*[@id="react-root"]/section/main/div/header/section/ul/li[2]`))
     const ig_trace = await ig_trace_ele.getText()
     console.log(`ig_trace: ${ig_trace}`)
   }
-  
 };
 
 async function socailCrawler () {
